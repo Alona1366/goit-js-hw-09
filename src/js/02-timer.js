@@ -31,6 +31,7 @@ const options = {
                 const timerId = setInterval(() => {
                 let diff = selectedDates[0] - new Date();
                 let countTime = convertMs(diff);
+
                 if (diff < 1000){
                     clearInterval(timerId);
                 }
@@ -38,12 +39,10 @@ const options = {
                     refs.startBtn.disabled = true;
                     Notiflix.Notify.success('The time has come!');
                 }
-                time = convertMs(dataTimer);
-                refs.days.textContent = countTime.days;
-                refs.hours.textContent = countTime.hours;
-                refs.minutes.textContent = countTime.minutes;
-                refs.seconds.textContent = countTime.seconds;
-            }, 1000);
+                refs.days.textContent = addLeadingZero(countTime.days);
+                refs.hours.textContent = addLeadingZero(countTime.hours);
+                refs.minutes.textContent = addLeadingZero(countTime.minutes);
+                refs.seconds.textContent = addLeadingZero(countTime.seconds); }, 1000);
         }
       }
     },
@@ -51,6 +50,9 @@ const options = {
 
   flatpickr(refs.input, options);
 
+  function addLeadingZero(value) {
+    return value.toString().padStart(2, [0]);
+  }
 
   function convertMs(ms) {
     const second = 1000;
