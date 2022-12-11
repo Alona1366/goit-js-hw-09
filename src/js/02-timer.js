@@ -37,7 +37,7 @@ const options = {
                 }
                 if (timerId){
                     refs.startBtn.disabled = true;
-                    Notiflix.Notify.success('The time has come!');
+                    // Notiflix.Notify.success('The time has come!');
                 }
                 refs.days.textContent = addLeadingZero(countTime.days);
                 refs.hours.textContent = addLeadingZero(countTime.hours);
